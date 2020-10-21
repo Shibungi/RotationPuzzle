@@ -15,6 +15,8 @@ let RotateX = 0;
 let RotateY = 0;
 let RotateDir = -1;
 
+let Move = 0;
+
 
 function setup(){
 	X = 800;
@@ -25,9 +27,6 @@ function setup(){
 			Board[i][j] = i*N + j + 1;
 		}
 	}
-
-	
-
 	createCanvas(X,Y);
 	//背景色
 	background(0);
@@ -71,6 +70,15 @@ function drawRotateArea(){
 }
 
 function keyPressed(){
+	if(key === 'q'){
+		Move = 0;
+		for(let i = 0;i < N;i++){
+			for(let j = 0;j < N;j++){
+				Board[i][j] = i*N + j + 1;
+			}
+		}
+	}
+
 	if(key === 'c'){
 		if(RotateSize === RotateSizeMax){
 			RotateSize = RotateSizeMin;
@@ -78,6 +86,7 @@ function keyPressed(){
 			RotateSize += 1;
 		}
 	}
+
 	if(keyCode === UP_ARROW){
 		RotateY -= 1;
 	}
@@ -102,6 +111,7 @@ function keyPressed(){
 }
 
 function Rotate(){
+	Move += 1;
 	let Panel = [];
 	for(let i = 0;i < RotateSize;i++){
 		Panel[i] = [];
