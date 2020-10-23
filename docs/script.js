@@ -57,11 +57,7 @@ function drawBoard(){
 
 function drawRotateArea(){
 	noStroke();
-	if(RotateDir === -1){
-		fill(204, 101, 192, 127);
-	}else{
-		fill(104, 101, 192, 127);
-	}
+	fill(204, 101, 192, 127);
 	let PanelSize = BoardSize/N;
 	let x = BoardX + RotateX*PanelSize;
 	let y = BoardY + RotateY*PanelSize;
