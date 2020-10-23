@@ -13,7 +13,6 @@ let RotateSizeMin = 2;
 let RotateSizeMax = 3;
 let RotateX = 0;
 let RotateY = 0;
-let RotateDir = -1;
 
 let Move = 0;
 
@@ -79,7 +78,7 @@ function keyPressed(){
 		}
 	}
 
-	if(key === 'c'){
+	if(key === ' '){
 		if(RotateSize === RotateSizeMax){
 			RotateSize = RotateSizeMin;
 		}else{
@@ -104,13 +103,11 @@ function keyPressed(){
 	if(RotateX + RotateSize > N)RotateX = N - RotateSize;
 	if(RotateY + RotateSize > N)RotateY = N - RotateSize;
 
-	if(key === 'v'){
-		RotateDir *= -1;
-	}
-	if(key == ' ')Rotate();
+	if(key === 'c')Rotate('L');
+	else if(key == 'v')Rotate('R');
 }
 
-function Rotate(){
+function Rotate(RotateDir){
 	Move += 1;
 	let Panel = [];
 	for(let i = 0;i < RotateSize;i++){
@@ -119,13 +116,13 @@ function Rotate(){
 			Panel[i][j] = Board[i+RotateY][j+RotateX];
 		}
 	}
-	if(RotateDir === -1){
+	if(RotateDir === 'L'){
 		for(let i = 0;i < RotateSize;i++){
 			for(let j = 0;j < RotateSize;j++){
 				Board[i+RotateY][j+RotateX] = Panel[j][RotateSize-1-i];
 			}
 		}
-	}else{
+	}else if(RotateDir === 'R'){
 		for(let i = 0;i < RotateSize;i++){
 			for(let j = 0;j < RotateSize;j++){
 				Board[i+RotateY][j+RotateX] = Panel[RotateSize-1-j][i];
