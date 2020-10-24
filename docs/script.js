@@ -148,7 +148,7 @@ function Rotate(RotateDir){
 }
 
 function make_new_problem(){
-	let moves = getRandomInt(4,8);
+	let moves = getRandomInt(2,8);
 	let Boards = [];
 	for(let i = 0;i <= moves;i++){
 		Boards[i] = [];
